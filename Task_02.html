@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#d1{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 50px 300px 300px;
+}
+
+input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+input[type=password]{
+	  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+input[type=text]:focus {
+  border: 2px solid #ccc;
+}
+input[type=password]:focus{
+	border: 2px solid #ccc;
+}
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+#bot{
+	 font-family: Arial, Helvetica, sans-serif;
+	 margin-left: 250px;
+	 font-weight: 500;
+	 color: #424242;	
+}
+	</style>
+	<script type="text/javascript">
+		function validate(){
+			var check = 0;
+			if(document.Task2.First_Name.value ==""){
+				document.getElementById("one").style.borderColor="red";
+				var str = "*Must not be empty*";
+				// result = str.fontsize(2);
+				var result = str.fontcolor("red");
+  				document.getElementById("d2").innerHTML = result;
+  				check = 1;
+			}
+			if(document.Task2.First_Name.value !=""){
+				document.getElementById("one").style.borderColor="green";
+				var str = "";
+  				document.getElementById("d2").innerHTML = str;
+			}
+
+			if(document.Task2.Last_Name.value ==""){
+				document.getElementById("one_p").style.borderColor="red";
+				var str = "*Must not be empty*";
+				// result = str.fontsize(2);
+				var result = str.fontcolor("red");
+  				document.getElementById("d6").innerHTML = result;
+  				check = 1;
+			}
+			if(document.Task2.Last_Name.value !=""){
+				document.getElementById("one_p").style.borderColor="green";
+				var str = "";
+  				document.getElementById("d6").innerHTML = str;
+			}
+
+			if(document.Task2.Email.value ==""){
+				document.getElementById("two").style.borderColor="red";
+				var str = "*Must not be empty*";
+  				var result = str.fontcolor("red");
+  				document.getElementById("d3").innerHTML = result;
+  				check = 1;
+			}
+			if ( document.Task2.Email.value != "" )		
+        	{
+				if (document.Task2.Email.value.indexOf('@') > 0)
+				{
+					var i = document.Task2.Email.value.indexOf('@');
+					if( document.Task2.Email.value.indexOf('.',i+1) > -1)
+					{
+						var j = document.Task2.Email.value.indexOf('.',i+1);
+						var length = document.Task2.Email.value.length;
+						if (length-(j+1) >= 1)
+						{
+							document.getElementById("two").style.borderColor="green";
+							var str = "";
+  							document.getElementById("d3").innerHTML = str;	
+						}
+						else
+						{
+						document.getElementById("two").style.borderColor="red";
+						var str = "*Email is invalid*";
+  						var result = str.fontcolor("red");
+  						document.getElementById("d3").innerHTML = result;
+						return false;
+						}
+					}
+					else
+					{
+					document.getElementById("two").style.borderColor="red";
+					var str = "*Email is invalid*";
+  					var result = str.fontcolor("red");
+  					document.getElementById("d3").innerHTML = result;
+					return false;
+					}
+				}
+				else
+				{
+				document.getElementById("two").style.borderColor="red";
+				var str = "*Email is invalid*";
+  				var result = str.fontcolor("red");
+  				document.getElementById("d3").innerHTML = result;
+				check = 1;
+				}
+			}
+			if(document.Task2.Password.value ==""){
+				document.getElementById("three").style.borderColor="red";
+				var str = "*Must not be empty*";
+  				var result = str.fontcolor("red");
+  				document.getElementById("d4").innerHTML = result;
+  				check = 1;
+			}
+			if(document.Task2.Password.value !=""){
+				var size = document.Task2.Password.value.length;
+				if( size < 8)
+				{
+					document.getElementById("three").style.borderColor="red";
+					var str = "*Password length Must be Greater than 8*";
+  					var result = str.fontcolor("red");
+  					document.getElementById("d4").innerHTML = result;
+  					check = 1;
+				}
+				else
+				{
+					document.getElementById("three").style.borderColor="green";
+					var str = "";
+  					document.getElementById("d4").innerHTML = str;
+  				}
+			}
+			if(document.Task2.Confirm_Password.value ==""){
+				document.getElementById("four").style.borderColor="red";
+				var str = "*Must not be empty*";
+  				var result = str.fontcolor("red");
+  				document.getElementById("d5").innerHTML = result;
+  				check = 1;
+			}
+			if(document.Task2.Password.value!=document.Task2.Confirm_Password.value)
+			{
+				document.getElementById("four").style.borderColor="red";
+				var str = "*Password and Confirm Password are not same*";
+  				var result = str.fontcolor("red");
+  				document.getElementById("d5").innerHTML = result;
+				check = 1;
+			}
+			if(document.Task2.Confirm_Password.value !="" && document.Task2.Confirm_Password.value.length >= 8){
+				document.getElementById("four").style.borderColor="green";
+				var str = "";
+  				document.getElementById("d4").innerHTML = str;
+			}	
+			if(check == 1){
+				return false;
+			}
+			return ture;
+		}//end validate
+	</script>
+</head>
+<body>
+	<div id="d1">
+		<form name = "Task2" onsubmit="return validate()" action="SignUp" method="POST">
+			<label id = "bot">Create Your Account...</label>
+			<br>
+			<label for="fname">First Name</label>
+    		<input type="text" id="one" name="First_Name" placeholder="Your first name.."><div id="d2"></div>
+    		<label for="lname">Last Name</label>
+    		<input type="text" id="one_p" name="Last_Name" placeholder="Your last name.."><div id="d6"></div>
+    		<label for="email">Email</label>
+    		<input type="text" id="two" name="Email" placeholder="Your email.."><div id="d3"></div>
+    		<label for="password">Password</label>
+    		<input type="password" id="three" name="Password" placeholder="Your password.."><div id="d4"></div>
+    		<label for="confirm_password">Confirm Password</label>
+    		<input type="password" id="four" name="Confirm_Password" placeholder="Confirm password.."><div id="d5"></div>
+    		<input type="Submit" value="Next">
+		</form>
+	</div>
+
+</body>
+</html>
